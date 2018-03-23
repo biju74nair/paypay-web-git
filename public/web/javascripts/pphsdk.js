@@ -2,13 +2,13 @@
 var scripts = [
 'https://code.jquery.com/jquery-1.12.4.js',
 'https://code.jquery.com/ui/1.12.1/jquery-ui.js',
-'http://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/socket.io/socket.io.js',
-'http://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/javascripts/socket_io.js'
+'https://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/socket.io/socket.io.js',
+'https://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/javascripts/socket_io.js'
 ];
 
 var styles = [
-    'http://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/css/sdk.css',
-    '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
+    'https://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/css/sdk.css',
+    'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
     ];
 
 (function() {
