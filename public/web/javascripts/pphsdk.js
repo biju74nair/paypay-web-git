@@ -2,12 +2,12 @@
 var scripts = [
 'https://code.jquery.com/jquery-1.12.4.js',
 'https://code.jquery.com/ui/1.12.1/jquery-ui.js',
-'http://localhost:5000/socket.io/socket.io.js',
-'http://localhost:5000/web/javascripts/socket_io.js'
+'http://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/socket.io/socket.io.js',
+'http://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/javascripts/socket_io.js'
 ];
 
 var styles = [
-    'http://localhost:5000/web/css/sdk.css',
+    'http://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/css/sdk.css',
     '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
     ];
 
