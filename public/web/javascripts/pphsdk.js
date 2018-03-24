@@ -220,7 +220,7 @@ function createLaunchDialog(){
     sdklaunch = document.createElement("div");
     sdklaunch.id = 'sdklaunch';
     sdklaunch.title = "Alert";
-    sdklaunch.innerHTML = "<a href='todo2://launch'>Launch PPH Mediator</a>";
+    sdklaunch.innerHTML = "<a href='pphweb://launch'>Launch PPH Mediator</a>";
     document.body.appendChild(sdklaunch);
 }
 
