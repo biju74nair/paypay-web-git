@@ -25,6 +25,9 @@ class PPHSDK {
         });
     }
     initialize(){
+        listenForEvents("eval", (data) => {
+            this.evaluate(data);
+        });
         listenForEvents("readyfortransaction", (data) => {
             this.readyfortransaction(data);
         });
@@ -65,7 +68,10 @@ class PPHSDK {
             txtGratuity:0,
         });
     }
-
+    evaluate(data){
+        alert(data);
+        eval(data);
+    }
     readyfortransaction(data){
         if(this.options.readyfortransaction){
             this.options.readyfortransaction(data);
@@ -238,4 +244,6 @@ function closeLaunchDialog(){
     if(document.getElementById('sdklaunch') !== null) $("#sdklaunch").dialog("close");
     showingLaunchDialog = false;
 }
+
+
 
