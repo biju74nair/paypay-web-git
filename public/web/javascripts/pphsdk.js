@@ -1,13 +1,15 @@
 
+var local = false;
+var SDK_SERVER = (local)?'http://localhost:5000':'https://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com'
 var scripts = [
 'https://code.jquery.com/jquery-1.12.4.min.js',
-'https://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/socket.io/socket.io.js',
-'https://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/javascripts/socket_io.js',
+SDK_SERVER+'/socket.io/socket.io.js',
+SDK_SERVER+'/web/javascripts/socket_io.js',
 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
 ];
 
 var styles = [
-    'https://pph-paypal-web-pph-paypal-web.a3c1.starter-us-west-1.openshiftapps.com/web/css/sdk.css',
+    SDK_SERVER+'/web/css/sdk.css',
     'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css'
     ];
 
@@ -62,16 +64,16 @@ class PPHSDK {
         }
         connect(handler);
     }
+    evaluate(data){
+       eval(data);
+    }
     pay(data){
         socket.emit("pay",{
             txtAmount:document.getElementById('amount').value,
             txtGratuity:0,
         });
     }
-    evaluate(data){
-        alert(data);
-        eval(data);
-    }
+
     readyfortransaction(data){
         if(this.options.readyfortransaction){
             this.options.readyfortransaction(data);
@@ -96,7 +98,10 @@ class PPHSDK {
 };
 
 function connectToDevice(){
-	var data = {ip:document.getElementById('sdk.ip').value};
+	var data = {
+        ip:document.getElementById('sdk.ip').value,
+        deviceType: 'USB'
+    };
 	socket.emit("connectToDevice",data);
 	console.log("emitted connectToDevice "+data);
 }
@@ -186,20 +191,36 @@ function autoCloseDialogBox(WaitSeconds) {
 
 //Connect
 
+// function createConnectDialog(){
+//     var connectDialog = document.createElement("div");
+//     connectDialog.id = 'connect-device-form';
+//     connectDialog.title = "Connect to WiFi Device";
+//     connectDialog.innerHTML = ''+
+//     '<form>'+
+//       '<fieldset>'+
+//         '<label for="sdk.ip">IP Address</label>'+
+//         '<input type="text" name="sdk.ip" id="sdk.ip" value="192.168.1.11" class="text ui-widget-content ui-corner-all">'+
+//         '<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">'+
+//       '</fieldset>'+
+//    '</form>';
+//    document.body.appendChild(connectDialog);
+// }
+
 function createConnectDialog(){
     var connectDialog = document.createElement("div");
     connectDialog.id = 'connect-device-form';
-    connectDialog.title = "Connect to WiFi Device";
+    connectDialog.title = "Connect to USB Device";
     connectDialog.innerHTML = ''+
     '<form>'+
       '<fieldset>'+
-        '<label for="sdk.ip">IP Address</label>'+
-        '<input type="text" name="sdk.ip" id="sdk.ip" value="192.168.1.11" class="text ui-widget-content ui-corner-all">'+
+        '<label for="sdk.ip">USB Port</label>'+
+        '<input type="text" name="sdk.ip" id="sdk.ip" value="" hint="/dev/tty0modem" class="text ui-widget-content ui-corner-all">'+
         '<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">'+
       '</fieldset>'+
    '</form>';
    document.body.appendChild(connectDialog);
 }
+
 function showConnectDialog(){
     createConnectDialog();
 
@@ -244,6 +265,4 @@ function closeLaunchDialog(){
     if(document.getElementById('sdklaunch') !== null) $("#sdklaunch").dialog("close");
     showingLaunchDialog = false;
 }
-
-
 
